@@ -1,0 +1,268 @@
+{
+  "fileTypes": ["scp"],
+  "name": "scp",
+  "patterns": [
+    {
+      "include": "#expression"
+    }
+  ],
+  "repository": {
+    "array-literal": {
+      "begin": "([\\w\\.]+)(\\[([\\d]+))",
+      "beginCaptures": {
+        "0": {
+          "name": "meta.brace.square.scp"
+        }
+      },
+      "end": "\\]",
+      "endCaptures": {
+        "0": {
+          "name": "meta.brace.square.scp"
+        }
+      },
+      "name": "meta.array.literal.scp",
+      "patterns": [
+        {
+          "include": "#expression"
+        }
+      ]
+    },
+    "comment-block": {
+      "begin": "/\\*",
+      "end": "\\*/",
+      "name": "comment.block.scp"
+    },
+    "comment-line": {
+      "match": "(//).*$\\n?",
+      "name": "comment.line.scp"
+    },
+    "control-statement": {
+      "match":
+        "\\s*(?i)(then|do|else|exit|exitWith|for|forEach|if|endif|return|switch|case|default|while|from|to|step)\\b",
+      "name": "keyword.control.scp"
+    },
+    "vObject-statements": {
+      "match": "\\s*(?i)(player|cursorTarget)\\b",
+      "name": "variable.language.vobject.scp"
+    },
+    "OFP": {
+      "match":
+        "\\s*(?i)(zxc|xcv)\\b",
+      "name": "entity.name.function.scp"
+    },
+    "var-declaration": {
+			"begin": "(([_a-zA-Z_0-9]+)\\.?)([_a-zA-Z_0-9]+)([ ]*)(=+)",
+			"end": "([\\w\\.\\<\\> ]+)",
+			"endCaptures": {
+        "0": {
+          "name": "function.args.scp",
+					"patterns": [		
+						{
+							"include": "#tag-statements"
+						}
+					]
+        }
+			},
+      "name": "variable.other.scp"
+		},
+		"fnc-call": {
+      "begin": "^\\s*?(?!return)([\\w\\.\\<\\>]+)",
+      "beginCaptures": {
+        "0": {
+          "name": "function.call.scp"
+        }
+      },
+			"end": "([\\w\\.\\<\\> ]+)",
+			"endCaptures": {
+        "0": {
+          "name": "function.args.scp",
+					"patterns": [		
+						{
+							"include": "#tag-statements"
+						}
+					]
+        }
+			},
+      "name": "function.block.scp"
+    },
+    "def-statements": {
+      "begin": "^\\[",
+      "end": "\\]",
+      "name": "def.block.scp"
+    },
+		"tag-statements": {
+			"match": "(?=\\<)(?:(?=.*?\\<(?!.*?\\1)(.*\\>(?!.*\\2).*))(?=.*?\\>(?!.*?\\2)(.*)).)+?.*?(?=\\1)[^\\<]*(?=\\2$)",
+      "name": "tag.control.scp"
+    },
+    "indexer-parameter": {
+      "captures": {
+        "1": {
+          "name": "variable.parameter.scp"
+        }
+      },
+      "match": "([a-zA-Z_$][\\w$]*)(?=\\:)",
+      "name": "meta.indexer.parameter.scp"
+    },
+    "null-literal": {
+      "match":
+        "\\b(null|nil|controlNull|displayNull|grpNull|locationNull|netObjNull|objNull|scriptNull|taskNull|teamMemberNull|configNull)\\b",
+      "name": "constant.language.null.scp"
+    },
+    "numeric-literal": {
+      "match": "\\s*(?<=[^$])((0(x|X)[0-9a-fA-F]+)|([0-9]+(\\.[0-9]+)?))\\b",
+      "name": "constant.numeric.scp"
+    },
+    "": {
+      "begin": "\\(",
+      "beginCaptures": {
+        "0": {
+          "name": "meta.brace.paren.scp"
+        }
+      },
+      "end": "\\)",
+      "endCaptures": {
+        "0": {
+          "name": "meta.brace.paren.scp"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#expression"
+        }
+      ]
+    },
+    "property-accessor": {
+      "match": "\\s*(?i)(get|set|select)\\b",
+      "name": "storage.type.property.scp"
+    },
+    "qstring-double": {
+      "begin": "\"",
+      "end": "\"",
+      "name": "string.double.scp"
+    },
+    "qstring-single": {
+      "begin": "'",
+      "end": "'",
+      "name": "string.single.scp"
+    },
+    "reserved-literal": {
+      "match":
+        "\\s*(?i)(this|_this|_x|_forEachIndex|_exception|_thisScript|_thisFSM|thisList|thisTrigger|west|east|resistance|civilian|independent|blufor|opfor)\\b",
+      "name": "variable.language.reserved.scp"
+    },
+    "comment": {
+      "name": "comment.scp",
+      "patterns": [
+        {
+          "include": "#comment-block"
+        },
+        {
+          "include": "#comment-line"
+        }
+      ]
+    },
+    "other": {
+      "name": "meta.expression.scp",
+      "patterns": [
+        {
+          "include": "#access-modifier"
+        },
+        {
+          "include": "#property-accessor"
+        }
+      ]
+		},
+    "expression": {
+      "name": "meta.expression.scp",
+      "patterns": [
+        {
+          "include": "#string"
+        },
+        {
+          "include": "#comment"
+        },
+        {
+          "include": "#literal"
+        },
+        {
+          "include": "#paren-expression"
+        },
+        {
+          "include": "#block"
+        },
+        {
+          "include": "#control-statement"
+        },
+        {
+          "include": "#statements"
+        },
+        {
+          "include": "#other"
+        },
+        {
+          "include": "#declaration"
+        }
+      ]
+    },
+    "statements": {
+      "name": "meta.expression.scp",
+      "patterns": [
+        {
+          "include": "#vObject-statements"
+        },
+        {
+          "include": "#OFP"
+				},
+				{
+					"include": "#fnc-call"
+				},
+				{
+					"include": "#tag-statements"
+				},
+				{
+					"include": "#def-statements"
+				}
+      ]
+    },
+    "declaration": {
+      "name": "meta.declaration.scp",
+      "patterns": [
+        {
+          "include": "#var-declaration"
+        }
+      ]
+    },
+    "literal": {
+      "name": "literal.scp",
+      "patterns": [
+        {
+          "include": "#numeric-literal"
+        },
+        {
+          "include": "#boolean-literal"
+        },
+        {
+          "include": "#null-literal"
+        },
+        {
+          "include": "#array-literal"
+        },
+        {
+          "include": "#reserved-literal"
+        }
+      ]
+    },
+    "string": {
+      "name": "string.scp",
+      "patterns": [
+        {
+          "include": "#qstring-single"
+        },
+        {
+          "include": "#qstring-double"
+        }
+      ]
+    }
+  },
+  "scopeName": "source.scp"
+}
