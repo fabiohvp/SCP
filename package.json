@@ -1,15 +1,21 @@
 {
 	"name": "scp",
-	"displayName": "SCP Language",
-	"description": "SCP Language support for VS Code.",
+	"displayName": "(UO) Sphere SCP Syntax Highlight",
+	"description": "SCP Syntax Highlight for VS Code.",
 	"version": "0.0.1",
-	"publisher": "Fabiohvp",
+	"publisher": "fabiohvp",
+    "license": "MIT",
 	"categories": [
 		"Languages",
 		"Snippets",
 		"Themes",
 		"Linters"
 	],
+    "preview": true,
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/fabiohvp/SCP"
+    },
 	"activationEvents": [
 		"onLanguage:scp"
 	],
