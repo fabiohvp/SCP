@@ -86,13 +86,26 @@
 			<key>name</key>
 			<string>Variable</string>
 			<key>scope</key>
-			<string>variable</string>
+			<string>variable.declaration.scp</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
 				<string></string>
 				<key>foreground</key>
 				<string>#9e5c07</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Variable Args</string>
+			<key>scope</key>
+			<string>variable.args.scp</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string></string>
+				<key>foreground</key>
+				<string>#f78080</string>
 			</dict>
 		</dict>
 		<dict>
@@ -167,7 +180,7 @@
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Function</string>
+			<string>Function Args</string>
 			<key>scope</key>
 			<string>function.args.scp</string>
 			<key>settings</key>

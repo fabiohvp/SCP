@@ -38,7 +38,7 @@
     },
     "control-statement": {
       "match":
-        "\\s*(?i)(then|do|else|exit|exitWith|for|forEach|if|endif|return|switch|case|default|while|from|to|step)\\b",
+        "\\s*(?i)(then|do|else|exit|exitWith|for|forEach|if|elif|endif|endfor|return|switch|case|default|while|from|to|step)\\b",
       "name": "keyword.control.scp"
     },
     "vObject-statements": {
@@ -46,43 +46,63 @@
       "name": "variable.language.vobject.scp"
     },
     "OFP": {
-      "match":
-        "\\s*(?i)(zxc|xcv)\\b",
+      "match": "\\s*(?i)(zxc|xcv)\\b",
       "name": "entity.name.function.scp"
     },
     "var-declaration": {
-			"begin": "(([_a-zA-Z_0-9]+)\\.?)([_a-zA-Z_0-9]+)([ ]*)(=+)",
-			"end": "([\\w\\.\\<\\> ]+)",
-			"endCaptures": {
+      "begin": "(([_a-zA-Z_0-9]+)\\.?)([_a-zA-Z_0-9]+)([ ]*)(=+)",
+      "beginCaptures": {
         "0": {
-          "name": "function.args.scp",
-					"patterns": [		
-						{
-							"include": "#tag-statements"
-						}
-					]
+		  "name": "variable.declaration.scp"
         }
-			},
+      },
+      "end": "([\\w ]*)((?:\\<.+?[\\w\\S\\>]*\\>)([\\w \\?\\:\\!\\+\\-\\.\\/]*))*",
+      "endCaptures": {
+        "0": {
+          "name": "variable.args.scp",
+          "patterns": [
+            {
+              "include": "#expression-custom"
+            }
+          ]
+        }
+      },
       "name": "variable.other.scp"
-		},
-		"fnc-call": {
+    },
+    "fnc-call": {
       "begin": "^\\s*?(?!return)([\\w\\.\\<\\>]+)",
       "beginCaptures": {
         "0": {
-          "name": "function.call.scp"
+		  "name": "function.call.scp"
         }
       },
-			"end": "([\\w\\.\\<\\> ]+)",
-			"endCaptures": {
+	  "end": "([\\w ]*)((?:\\<.+?[\\w\\S\\>]*\\>)([\\w \\?\\:\\!\\+\\-\\.\\/]*))*",
+      "endCaptures": {
         "0": {
           "name": "function.args.scp",
-					"patterns": [		
-						{
-							"include": "#tag-statements"
-						}
-					]
-        }
-			},
+          "patterns": [
+			{
+				"include": "#expression-custom"
+			}
+          ]
+		},
+		"1": {
+			"name": "function.args.scp",
+			"patterns": [
+			  {
+				  "include": "#expression-custom"
+			  }
+			]
+		  },
+		  "3": {
+			"name": "function.args.scp",
+			"patterns": [
+			  {
+				  "include": "#expression-custom"
+			  }
+			]
+		  }
+      },
       "name": "function.block.scp"
     },
     "def-statements": {
@@ -90,8 +110,8 @@
       "end": "\\]",
       "name": "def.block.scp"
     },
-		"tag-statements": {
-			"match": "(?=\\<)(?:(?=.*?\\<(?!.*?\\1)(.*\\>(?!.*\\2).*))(?=.*?\\>(?!.*?\\2)(.*)).)+?.*?(?=\\1)[^\\<]*(?=\\2$)",
+    "tag-statements": {
+      "match": "\\<(.+?)[\\w\\S\\>]*\\>",
       "name": "tag.control.scp"
     },
     "indexer-parameter": {
@@ -171,7 +191,7 @@
           "include": "#property-accessor"
         }
       ]
-		},
+    },
     "expression": {
       "name": "meta.expression.scp",
       "patterns": [
@@ -185,23 +205,37 @@
           "include": "#literal"
         },
         {
-          "include": "#paren-expression"
-        },
-        {
           "include": "#block"
         },
         {
           "include": "#control-statement"
-        },
+		},
         {
           "include": "#statements"
-        },
+		},
         {
           "include": "#other"
         },
         {
           "include": "#declaration"
         }
+      ]
+    },
+    "expression-custom": {
+      "name": "meta.expression-custom.scp",
+      "patterns": [
+        {
+          "include": "#string"
+        },
+        {
+          "include": "#comment"
+        },
+        {
+          "include": "#block"
+        },
+        {
+          "include": "#statements"
+		}
       ]
     },
     "statements": {
@@ -212,16 +246,16 @@
         },
         {
           "include": "#OFP"
-				},
-				{
-					"include": "#fnc-call"
-				},
-				{
-					"include": "#tag-statements"
-				},
-				{
-					"include": "#def-statements"
-				}
+        },
+        {
+          "include": "#fnc-call"
+        },
+        {
+          "include": "#tag-statements"
+        },
+        {
+          "include": "#def-statements"
+        }
       ]
     },
     "declaration": {
