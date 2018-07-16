@@ -38,7 +38,7 @@
     },
     "control-statement": {
       "match":
-        "\\s*(?i)(then|do|else|exit|exitWith|for|forEach|if|elif|elseif|endif|endfor|return|switch|case|default|while|from|to|step)\\b",
+        "\\s*(?i)(then|do|else|exit|exitWith|for|forEach|if|elif|elseif|endif|endfor|return|switch|case|default|while|from|to|step|forcharlayer|forcharmemorytype|forchars|forclients|forplayers|forcont|forcontid|forconttype|forinstances|foritems|forobjs)\\b",
       "name": "keyword.control.scp"
     },
     "vObject-statements": {
