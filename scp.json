@@ -38,7 +38,7 @@
     },
     "control-statement": {
       "match":
-        "\\s*(?i)(then|do|else|exit|exitWith|for|forEach|if|elif|elseif|endif|endfor|return|switch|case|default|while|from|to|step|forcharlayer|forcharmemorytype|forchars|forclients|forplayers|forcont|forcontid|forconttype|forinstances|foritems|forobjs)\\b",
+        "\\s*(?i)(try|tryp|trysrc|trysrv|target|targetf|targetfw|targetg|then|do|else|exit|exitWith|for|forEach|if|elif|elseif|endif|endfor|return|switch|case|default|while|from|to|step|forcharlayer|forcharmemorytype|forchars|forclients|forplayers|forcont|forcontid|forconttype|forinstances|foritems|forobjs)\\b",
       "name": "keyword.control.scp"
     },
     "vObject-statements": {
@@ -159,11 +159,6 @@
       "begin": "\"",
       "end": "\"",
       "name": "string.double.scp"
-    },
-    "qstring-single": {
-      "begin": "'",
-      "end": "'",
-      "name": "string.single.scp"
     },
     "reserved-literal": {
       "match":
@@ -289,9 +284,6 @@
     "string": {
       "name": "string.scp",
       "patterns": [
-        {
-          "include": "#qstring-single"
-        },
         {
           "include": "#qstring-double"
         }
