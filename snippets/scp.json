@@ -1,4 +1,9 @@
 {
+	"begin" : {
+		"prefix": "begin",
+		"body": ["begin", "\t$0", "end"],
+		"description": "Groups a set of lines together, for use with DORAND and DOSWITCH statements."
+	},
     "dorand" : {
 		"prefix": "dorand",
 		"body": ["dorand ${1:value}", "\t$0", "enddo"],
@@ -17,12 +22,43 @@
 	"forcharlayer": {
 		"prefix": "forcharlayer",
 		"body": ["forcharlayer ${1:layer}", "\t$0", "endfor"],
-		"description": "Loops through all the items of this layer (chars)"
+		"description": "Loops through all items that a character has equipped on a specified layer."
 	},
+	"forcharmemorytype": {
+		"prefix": "forcharmemorytype",
+		"body":["forcharmemorytype ${1:memory_flags}", "\t$0", "endfor"],
+		"description": "Loops through all memory items on a character that have one of the specified flags."
+	},
+	"forchars": {
+		"prefix": "forchars",
+		"body":["forchars ${1:distance}", "\t$0", "endfor"],
+		"description": "Loops through all characters within distance tiles."
+	},
+	"forclients": {
+		"prefix": "forclients",
+		"body":["forclients ${1:distance}", "\t$0", "endfor"],
+		"description": "Loops through all connected clients within distance tiles."
+	},
+	"forcont": {
+		"prefix": "forcont",
+		"body":["forcont ${1:cont_uid} ${2:max_subcontainers}", "\t$0", "endfor"],
+		"description": "Loops through all items inside a container."
+	},
+	"forcontid": {
+		"prefix": "forcontid",
+		"body":["forcontid ${1:itemID} ${2:max_subcontainers}", "\t$0", "endfor"],
+		"description": "Loops through all items inside a container with a specified BASEID"
+	},
+	"forconttype"
+	"forinstances"
+	"foritems"
+	"forobjs"
+	"forplayers"
 	"if" : {
 		"prefix": "if",
 		"body": ["if ${1:conditional}", "\t$0", "endif"],
 		"description": "if conditional"
 	},
 	"while" : {}
+
 }
