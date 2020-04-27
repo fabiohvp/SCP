@@ -1,1 +1,28 @@
-{}
+{
+    "dorand" : {
+		"prefix": "dorand",
+		"body": ["dorand ${1:value}", "\t$0", "enddo"],
+		"description": "Executes a random line of code within the block."
+	},
+	"doswitch" : {
+		"prefix": "doswitch",
+		"body": ["doswitch ${1:value}", "\t$0", "enddo"],
+		"description": "Executes the specified line of code within the block."
+	},
+	"for" : {
+		"prefix": "for",
+		"body": ["for ${2:name} ${1:range}", "\t$0", "endfor"],
+		"description": "Loops through the block of code"
+	},
+	"forcharlayer": {
+		"prefix": "forcharlayer",
+		"body": ["forcharlayer ${1:layer}", "\t$0", "endfor"],
+		"description": "Loops through all the items of this layer (chars)"
+	},
+	"if" : {
+		"prefix": "if",
+		"body": ["if ${1:conditional}", "\t$0", "endif"],
+		"description": "if conditional"
+	},
+	"while" : {}
+}
