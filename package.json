@@ -1,102 +1,102 @@
 {
-	"name": "scp",
-	"displayName": "(UO) Sphere SCP Syntax Highlight",
-	"description": "SCP Syntax Highlight for VS Code.",
-	"version": "1.0.3",
-	"publisher": "fabiohvp",
-    "license": "MIT",
-	"categories": [
-		"Languages",
-		"Snippets",
-		"Themes",
-		"Linters"
-	],
-    "preview": true,
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/fabiohvp/SCP"
+  "name": "scp",
+  "displayName": "(UO) Sphere SCP Syntax Highlight",
+  "description": "SCP Syntax Highlight for VS Code.",
+  "version": "1.0.3",
+  "publisher": "fabiohvp",
+  "license": "MIT",
+  "categories": [
+    "Languages",
+    "Snippets",
+    "Themes",
+    "Linters"
+  ],
+  "preview": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fabiohvp/SCP"
+  },
+  "activationEvents": [
+    "onLanguage:scp"
+  ],
+  "main": "./out/extension",
+  "engines": {
+    "vscode": "^1.10.0"
+  },
+  "contributes": {
+    "languages": [
+      {
+        "id": "scp",
+        "aliases": [
+          "SCP",
+          "scp",
+          "Sphere Script"
+        ],
+        "extensions": [
+          ".scp"
+        ],
+        "configuration": "./scp.configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "scp",
+        "scopeName": "source.scp",
+        "path": "./scp.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "scp",
+        "path": "./snippets/scp.json"
+      }
+    ],
+    "themes": [
+      {
+        "label": "[SCP] Light Theme",
+        "uiTheme": "vs",
+        "path": "./themes/scp.tmTheme"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "SCP Language",
+      "properties": {
+        "scp.enableOFP": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable commands introduced with Operation Flashpoint"
+        },
+        "scp.maxNumberOfProblems": {
+          "type": "number",
+          "default": 100,
+          "description": "Controls the maximum number of problems produced by the server."
+        }
+      }
     },
-	"activationEvents": [
-		"onLanguage:scp"
-	],
-	"main": "./out/extension",
-	"engines": {
-		"vscode": "^1.10.0"
-	},
-	"contributes": {
-		"languages": [
-			{
-				"id": "scp",
-				"aliases": [
-					"SCP",
-					"scp",
-					"Sphere Script"
-				],
-				"extensions": [
-					".scp"
-				],
-				"configuration": "./scp.configuration.json"
-			}
-		],
-		"grammars": [
-			{
-				"language": "scp",
-				"scopeName": "source.scp",
-				"path": "./scp.json"
-			}
-		],
-		"snippets": [
-			{
-				"language": "scp",
-				"path": "./snippets/scp.json"
-			}
-		],
-		"themes": [
-			{
-				"label": "[SCP] Light Theme",
-				"uiTheme": "vs",
-				"path": "./themes/scp.tmTheme"
-			}
-		],
-		"configuration": {
-			"type": "object",
-			"title": "SCP Language",
-			"properties": {
-				"scp.enableOFP": {
-					"type": "boolean",
-					"default": true,
-					"description": "Enable commands introduced with Operation Flashpoint"
-				},
-				"scp.maxNumberOfProblems": {
-					"type": "number",
-					"default": 100,
-					"description": "Controls the maximum number of problems produced by the server."
-				}
-			}
-		},
-		"configurationDefaults": {
-			"[scp]": {
-				"editor.quickSuggestions": true,
-				"editor.tabSize": 4,
-				"editor.insertSpaces": false,
-				"editor.detectIndentation": true,
-				"editor.trimAutoWhitespace": true,
-				"editor.autoClosingBrackets": true
-			}
-		}
-	},
-	"scripts": {
-		"update-vscode": "node ./node_modules/vscode/bin/install",
-		"postinstall": "node ./node_modules/vscode/bin/install"
-	},
-	"devDependencies": {
-		"@types/mocha": "^2.2.33",
-		"@types/node": "^6.0.52",
-		"typescript": "^2.1.5",
-		"vscode": "^1.0.5"
-	},
-	"dependencies": {
-		"vscode-languageclient": "^3.1.0",
-		"vscode-languageserver": "^3.1.0"
-	}
+    "configurationDefaults": {
+      "[scp]": {
+        "editor.quickSuggestions": true,
+        "editor.tabSize": 4,
+        "editor.insertSpaces": false,
+        "editor.detectIndentation": true,
+        "editor.trimAutoWhitespace": true,
+        "editor.autoClosingBrackets": true
+      }
+    }
+  },
+  "scripts": {
+    "update-vscode": "node ./node_modules/vscode/bin/install",
+    "postinstall": "node ./node_modules/vscode/bin/install"
+  },
+  "devDependencies": {
+    "@types/mocha": "^8.2.2",
+    "@types/node": "15.6.1",
+    "typescript": "^4.3.2",
+    "vscode": "^1.1.37"
+  },
+  "dependencies": {
+    "vscode-languageclient": "^3.1.0",
+    "vscode-languageserver": "^3.1.0"
+  }
 }
