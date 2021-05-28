@@ -2,7 +2,7 @@
   "name": "scp",
   "displayName": "(UO) Sphere SCP Syntax Highlight",
   "description": "SCP Syntax Highlight for VS Code.",
-  "version": "1.0.3",
+  "version": "2.0.2",
   "publisher": "fabiohvp",
   "license": "MIT",
   "categories": [
