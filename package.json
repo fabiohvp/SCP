@@ -6,7 +6,7 @@
   "publisher": "fabiohvp",
   "license": "MIT",
   "categories": [
-    "Languages",
+    "Programming Languages",
     "Snippets",
     "Themes",
     "Linters"
@@ -81,7 +81,7 @@
         "editor.insertSpaces": false,
         "editor.detectIndentation": true,
         "editor.trimAutoWhitespace": true,
-        "editor.autoClosingBrackets": true
+        "editor.autoClosingBrackets": "always"
       }
     }
   },
