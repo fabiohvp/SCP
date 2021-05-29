@@ -2,7 +2,7 @@
   "name": "scp",
   "displayName": "(UO) Sphere SCP Syntax Highlight",
   "description": "SCP Syntax Highlight for VS Code.",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "publisher": "fabiohvp",
   "license": "MIT",
   "categories": [
@@ -55,7 +55,12 @@
       {
         "label": "[SCP] Light Theme",
         "uiTheme": "vs",
-        "path": "./themes/scp.tmTheme"
+        "path": "./themes/light.tmTheme"
+      },
+      {
+        "label": "[SCP] Dark Theme",
+        "uiTheme": "vs",
+        "path": "./themes/dark.tmTheme"
       }
     ],
     "configuration": {
